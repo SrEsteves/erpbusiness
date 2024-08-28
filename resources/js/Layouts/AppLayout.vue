@@ -44,10 +44,10 @@ const logout = () => {
                     <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="text-white">
                         Dashboard
                     </NavLink>
-                    <NavLink href="/clients" :active="route().current('clients')" class="text-white">
+                    <NavLink :href="route('clients.index')" :active="route().current('clients.index')" class="text-white">
                         Clientes
                     </NavLink>
-                    <NavLink href="/products" :active="route().current('products')" class="text-white">
+                    <NavLink :href="route('products.index')" :active="route().current('products.index')" class="text-white">
                         Produtos
                     </NavLink>
                 </div>

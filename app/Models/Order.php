@@ -9,6 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'client_id',
+        'total_price',
+    ];
+
     public function client(){
         return $this->belongsTo(Client::class);
     }

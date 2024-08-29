@@ -28,12 +28,14 @@ const logout = () => {
 </script>
 
 <template>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+
     <div class="min-h-screen bg-gray-100">
         <Head :title="title" />
 
         <Banner />
 
-        <nav class="bg-blue-700 p-4">
+        <nav class="bg-blue-700 p-4 shadow-md">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center space-x-4">
@@ -49,6 +51,9 @@ const logout = () => {
                     </NavLink>
                     <NavLink :href="route('products.index')" :active="route().current('products.index')" class="text-white">
                         Produtos
+                    </NavLink>
+                    <NavLink :href="route('orders.index')" :active="route().current('orders.index')" class="text-white">
+                        Pedidos
                     </NavLink>
                 </div>
 
@@ -67,17 +72,17 @@ const logout = () => {
                             <template #content>
                                 <div class="w-60">
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        Manage Team
+                                        Gerenciar Equipe
                                     </div>
                                     <DropdownLink :href="route('teams.show', $page.props.auth.user.current_team)">
-                                        Team Settings
+                                        Configurações da Equipe
                                     </DropdownLink>
                                     <DropdownLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')">
-                                        Create New Team
+                                        Criar Nova Equipe
                                     </DropdownLink>
                                     <div v-if="$page.props.auth.user.all_teams.length > 1" class="border-t border-gray-200 mt-2">
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Switch Teams
+                                            Mudar de Equipe
                                         </div>
                                         <template v-for="team in $page.props.auth.user.all_teams" :key="team.id">
                                             <form @submit.prevent="switchToTeam(team)">
@@ -107,18 +112,18 @@ const logout = () => {
                             </template>
                             <template #content>
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    Manage Account
+                                    Gerenciar Conta
                                 </div>
                                 <DropdownLink :href="route('profile.show')">
-                                    Profile
+                                    Perfil
                                 </DropdownLink>
                                 <DropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
-                                    API Tokens
+                                    Tokens de API
                                 </DropdownLink>
                                 <div class="border-t border-gray-200 mt-2">
                                     <form @submit.prevent="logout">
                                         <DropdownLink as="button">
-                                            Log Out
+                                            Sair
                                         </DropdownLink>
                                     </form>
                                 </div>

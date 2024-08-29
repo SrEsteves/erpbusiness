@@ -20,7 +20,13 @@ class DashboardController extends Controller
         $clientsCount = Client::count();
         $productsCount = Product::count();
         $salesToday = Order::whereDate('created_at', now()->toDateString())->count();
-        $totalRevenue = Order::sum('total_price'); // Assumindo que você tenha um campo 'total' em sua tabela de orders
+        $totalRevenue = Order::sum('total_price');
+
+        // Buscar os clientes mais recentes
+        $recentClients = Client::orderBy('created_at', 'desc')->take(5)->get();
+
+        // Buscar produtos com estoque baixo (exemplo: menos de 10 unidades)
+        $lowStockProducts = Product::where('stock', '<', 10)->get();
 
         // Passar os dados para o componente Vue via Inertia
         return Inertia::render('Dashboard', [
@@ -28,6 +34,8 @@ class DashboardController extends Controller
             'productsCount' => $productsCount,
             'salesToday' => $salesToday,
             'totalRevenue' => $totalRevenue,
+            'recentClients' => $recentClients,
+            'lowStockProducts' => $lowStockProducts,
         ]);
     }
 

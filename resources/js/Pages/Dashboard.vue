@@ -32,9 +32,7 @@ const props = defineProps({
         <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 p-6 lg:p-8">
             <div class="p-4 bg-white rounded-lg shadow flex items-center">
                 <div class="text-blue-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
-                    </svg>
+                    <i class="mdi mdi-account-multiple-outline mdi-48px"></i>
                 </div>
                 <div class="ml-4">
                     <h2 class="text-xl font-semibold text-gray-900">
@@ -48,9 +46,7 @@ const props = defineProps({
 
             <div class="p-4 bg-white rounded-lg shadow flex items-center">
                 <div class="text-green-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18v18H3V3z" />
-                    </svg>
+                    <i class="mdi mdi-cube-outline mdi-48px"></i>
                 </div>
                 <div class="ml-4">
                     <h2 class="text-xl font-semibold text-gray-900">
@@ -64,9 +60,7 @@ const props = defineProps({
 
             <div class="p-4 bg-white rounded-lg shadow flex items-center">
                 <div class="text-orange-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.75V19.25M4.75 12H19.25" />
-                    </svg>
+                    <i class="mdi mdi-cash-register mdi-48px"></i>
                 </div>
                 <div class="ml-4">
                     <h2 class="text-xl font-semibold text-gray-900">
@@ -80,9 +74,7 @@ const props = defineProps({
 
             <div class="p-4 bg-white rounded-lg shadow flex items-center">
                 <div class="text-red-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.75V19.25M4.75 12H19.25" />
-                    </svg>
+                    <i class="mdi mdi-currency-usd mdi-48px"></i>
                 </div>
                 <div class="ml-4">
                     <h2 class="text-xl font-semibold text-gray-900">

@@ -9,8 +9,19 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function client(){
+    protected $fillable = [
+        'client_id',
+        'total_price',
+        'status',
+    ];
+
+    public function client()
+    {
         return $this->belongsTo(Client::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withPivot('quantity', 'price');
+    }
 }

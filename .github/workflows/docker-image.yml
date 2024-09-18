@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set tag version
+      id: tag_version
+      run: |
+        # Define a tag based on the short commit hash or timestamp
+        TAG=$(date +'%Y%m%d%H%M%S')-${GITHUB_SHA::7}
+        echo "TAG=$TAG" >> $GITHUB_ENV
+
+    - name: Build the Docker image
+      run: |
+        docker login -u ${{ secrets.REGISTRY_USER }} -p ${{ secrets.REGISTRY_PASS }}
+        docker build -t sresteves/erpbusiness:${{ env.TAG }} .
+    
+    - name: Push the Docker image
+      run: |
+        docker push sresteves/erpbusiness:${{ env.TAG }}

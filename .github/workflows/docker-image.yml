@@ -4,8 +4,6 @@ on:
   push:
     branches: [ "master" ]
     tags: [ "*" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
@@ -24,7 +22,7 @@ jobs:
         if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
           echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
         else
-          echo "VERSION=${GITHUB_SHA}" >> $GITHUB_ENV
+          echo "VERSION=latest" >> $GITHUB_ENV
         fi
 
     - name: Build and push Docker image

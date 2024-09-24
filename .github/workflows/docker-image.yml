@@ -4,6 +4,8 @@ on:
   push:
     branches: [ "master" ]
     tags: [ "*" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -35,6 +37,7 @@ jobs:
         image-ref: sresteves/erpbusiness:${{ env.VERSION }}
 
     - name: Push Docker image
+      if: github.ref == 'refs/heads/master'
       run: |
         docker push sresteves/erpbusiness:${{ env.VERSION }}
         docker push sresteves/erpbusiness:latest

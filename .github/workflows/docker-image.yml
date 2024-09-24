@@ -25,8 +25,16 @@ jobs:
           echo "VERSION=latest" >> $GITHUB_ENV
         fi
 
-    - name: Build and push Docker image
+    - name: Build Docker image
       run: |
         docker build -t sresteves/erpbusiness:${{ env.VERSION }} -t sresteves/erpbusiness:latest .
+
+    - name: Scan Docker image for vulnerabilities
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: sresteves/erpbusiness:${{ env.VERSION }}
+
+    - name: Push Docker image
+      run: |
         docker push sresteves/erpbusiness:${{ env.VERSION }}
         docker push sresteves/erpbusiness:latest
